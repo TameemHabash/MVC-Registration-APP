@@ -2,21 +2,6 @@ const sessionKey = 'sessionKey';
 
 
 
-function showLoginPage() {
-    getElement('#loginEmail').value = '';
-    getElement('#loginPassword').value = '';
-
-    getElement('#emptyLoginInfoError').classList.add('d-none');
-    getElement('#invalideEmailError').classList.add('d-none');
-    getElement('#invalidePasswordError').classList.add('d-none');
-
-
-    getElement('#loginPage').classList.remove('d-none');
-    getElement('#signupPage').classList.add('d-none');
-    getElement('#todoPage').classList.add('d-none');
-
-}
-
 function showSignupPage() {
     getElement('#signupFname').value = '';
     getElement('#signupLname').value = '';

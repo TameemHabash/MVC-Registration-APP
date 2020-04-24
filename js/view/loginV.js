@@ -1,26 +1,23 @@
+
 let invalidLoginEmail = false;
 let invalidLoginPassword = false;
 
 
 
-function loginProcess() {
-    user = isUserExist(getElement('#loginEmail').value.toLowerCase());
+function showLoginPage() {
+    getElement('#loginEmail').value = '';
+    getElement('#loginPassword').value = '';
 
-    if (!user) {
-        getElement('#invalideEmailError').classList.remove('d-none');
-    } else {
-        getElement('#invalideEmailError').classList.add('d-none');
-        const EncodedEnteredPassword = encode(getElement('#loginPassword').value);
-        if (user.password !== EncodedEnteredPassword) {
-            getElement('#invalidePasswordError').classList.remove('d-none');
-        } else {
-            activateUserSession(user);
-            showTodoPage();
-        }
-    }
+    getElement('#emptyLoginInfoError').classList.add('d-none');
+    getElement('#invalideEmailError').classList.add('d-none');
+    getElement('#invalidePasswordError').classList.add('d-none');
+
+
+    getElement('#loginPage').classList.remove('d-none');
+    getElement('#signupPage').classList.add('d-none');
+    getElement('#todoPage').classList.add('d-none');
+
 }
-
-
 
 getElement('#loginEmail').addEventListener("focusout", function () {
     const input = getElement('#loginEmail').value.toLowerCase();
@@ -77,7 +74,7 @@ getElement('#loginBtn').addEventListener('mouseover', function () {
 
             } else {
                 getElement('#emptyLoginInfoError').classList.add('d-none');
-                loginProcess();
+                loginProcess(emailInput, passwordInput);
             }
         });
     }
@@ -86,3 +83,13 @@ getElement('#loginBtn').addEventListener('mouseover', function () {
 });
 
 getElement('#signupFromLoginBtn').addEventListener('click', showSignupPage);
+
+function showInvalideEmailError() {
+    getElement('#invalideEmailError').classList.remove('d-none');
+}
+function hideInvalideEmailError() {
+    getElement('#invalideEmailError').classList.add('d-none');
+}
+function showInvalidePasswordError() {
+    getElement('#invalidePasswordError').classList.remove('d-none');
+}
