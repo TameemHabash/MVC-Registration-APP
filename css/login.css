@@ -1,0 +1,40 @@
+body {
+    background-color: #ecebeb;
+}
+
+.login {
+    min-width: 20rem;
+    min-height: 30rem;
+    background-color: white;
+    border-radius: .25rem;
+}
+
+.signup-btn {
+    text-decoration: none;
+    border-radius: .25rem;
+    color: #17a2b8 !important;
+    padding: .5rem 2rem;
+    transition: all .4s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.signup-btn:hover {
+    background-color: #17a2b8;
+    border-color: #117b8b50;
+    border-radius: .25rem;
+    color: white !important;
+    padding: .5rem 2rem;
+}
+
+.signup-btn:focus,
+.signup-btn.focus {
+    box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5);
+}
+
+.signup-btn:active {
+    background-color: #17a2b8;
+    border-radius: .25rem;
+    color: white !important;
+    padding: .5rem 2rem;
+}

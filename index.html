@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/utils.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/signup.css">
+    <link rel="stylesheet" href="./css/todo.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="loginPage" class="center vh-100 w-100 flex-column">
+        <div class="login shadow center flex-column">
+            <h1 class="text-info mb-lg-5">ToDo</h1>
+            <div class="form-group">
+                <small id="emptyLoginInfoError" class="text-error d-none">Enter Your Info</small>
+
+                <input id="loginEmail" type="email" class="form-control" placeholder="Enter Your Email"
+                    aria-describedby="emailHelp">
+                <small id="invalideEmailError" class="text-error d-none">Invalide Email</small>
+            </div>
+            <div class="form-group">
+                <input id="loginPassword" type="password" class="form-control" placeholder="Password">
+                <small id="invalidePasswordError" class="text-error d-none">Invalide Password</small>
+            </div>
+            <button id="loginBtn" type="submit" class="btn btn-info px-4 my-5">Login</button>
+            <a id="signupFromLoginBtn" class="signup-btn">Creat Account</a>
+        </div>
+    </div>
+
+    <div id="signupPage" class="center vh-100 w-100 flex-column d-none">
+        <div id="signup" class="signup shadow center flex-column px-4 pt-5">
+            <h1 class="text-info mb-lg-5">ToDo</h1>
+
+
+            <div id="signupName" class="form-group d-flex flex-row">
+                <div class="form-group w-50 mb-0 mr-2 d-flex flex-column">
+                    <input id="signupFname" type="text" class="form-control" placeholder="First Name">
+                    <small id="FnameError" class="text-error d-none">name must be at least 3 letters</small>
+                </div>
+                <div class="form-group w-50 mb-0 ml-2 d-flex flex-column">
+                    <input id="signupLname" type="text" class="form-control" placeholder="Last Name">
+                    <small id="LnameError" class="text-error d-none">name must be at least 3 letters</small>
+                </div>
+            </div>
+            <div class="form-group w-100">
+                <input id="signupPhone" type="number" class="form-control" placeholder="Mobile Number">
+            </div>
+            <div class="form-group w-100">
+                <input id="signupEmail" type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group w-100">
+                <input id="signupPassword1" type="password" class="form-control" placeholder="Enter Password">
+                <small id="Password1Error" class="text-error d-none">Password must be at least 6 characters</small>
+            </div>
+            <div class="form-group w-100 mb-5">
+                <input id="signupPassword2" type="password" class="form-control" placeholder="re-Enter Password">
+                <small id="Password2NotMatchError" class="text-error d-none">Password not match</small>
+
+            </div>
+            <small id="fullInfoError" class="text-error d-none">Enter Full Info</small>
+            <small id="existAccountError" class="text-error d-none">already have account for this Email, want to
+                <a id="loginFromSignup"
+                    class="cursor-pointer text-info text-decoration-none font-weight-bold">login</a></small>
+            <button id="signupBtn" type="submit" class="btn btn-info px-4 mb-5 mt-2">Create</button>
+
+        </div>
+    </div>
+
+    <div id="todoPage" class="d-none">
+        <nav class="d-flex flex-row-reverse pr-5 bg-info text-white overflow-hidden">
+            <button id="logoutBtn" type="button" class="remove-button-styling">
+                <i class="fas fa-sign-out-alt text-white"></i>
+            </button>
+        </nav>
+
+        <div class="container m-md-5">
+            <div class="row">
+                <div class="col">
+                    <div class="card w-100 shadow categories">
+                        <div class="card-header bg-info">
+                            <h1 class="text-white">categories</h1>
+                            <div class="input-group mt-3 mb-3">
+                                <input type="text" class="form-control" placeholder="Enter Category title"
+                                    id="categoryTitleInput">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-info bg-light" type="button"
+                                        id="addCategoryBtn">ADD</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" is>
+                            <ul class="list-group" id="categoriesList">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card w-100 todos shadow-lg">
+                        <div class="card-header bg-info">
+                            <h1 class="text-white">ToDo's</h1>
+                            <div class="input-group mt-3 mb-3">
+                                <input type="text" class="form-control" id="todoTitleInput"
+                                    placeholder="Enter ToDo title">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-info bg-light" type="button"
+                                        id="addTodoBtn">ADD</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            <small id="emptyCategoriesListError" class="text-error d-none">please
+                                create new
+                                category</small>
+                            <ul class="list-group" id="todoList">
+                            </ul>
+                        </div>
+                        <div class="card-footer text-muted d-flex justify-content-between todos-append-chooses">
+                            <button class="btn btn-light px-6 todos-append-chooses__all" id="allTodosBtn">All</button>
+                            <button class="btn btn-info" id="copmletedTodosBtn">Completed</button>
+                            <button class="btn btn-info" id="notCopmletedTodosBtn">Not completed</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script async defer src="./js/jquery.js"></script>
+    <script async defer src="./js/all.min.js"></script>
+    <script async defer src="./js/bootstrap.min.js"></script>
+    <script async defer src="./js/utils.js"></script>
+    <script async defer src="./js/main.js"></script>
+    <script async defer src="./js/users.js"></script>
+    <script async defer src="./js/login.js"></script>
+    <script async defer src="./js/signup.js"></script>
+    <script async defer src="./js/todo.js"></script>
+
+</body>
+
+</html>

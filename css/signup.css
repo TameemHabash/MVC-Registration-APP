@@ -1,0 +1,16 @@
+#signupPhone::-webkit-outer-spin-button,
+#signupPhone::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#signupPhone {
+    -moz-appearance: textfield;
+}
+
+.signup {
+    min-width: 20rem;
+    min-height: 30rem;
+    background-color: white;
+    border-radius: .25rem;
+}

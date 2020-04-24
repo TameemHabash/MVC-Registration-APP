@@ -1,0 +1,47 @@
+.categories .list-group-item {
+    transition: all .4s ease;
+}
+
+.categories .list-group-item:hover {
+    background-color: #17a3b89c;
+    color: rgb(238, 238, 238);
+}
+
+.category-bg {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.todos .input-group-append button:hover {
+    color: #17a2b8;
+}
+
+.todos .card-body button:hover {}
+
+.categories .input-group-append button:hover {
+    color: #17a2b8;
+}
+
+.todos-append-chooses__all {
+    padding: 0 3rem;
+    background-color: rgb(214, 214, 214);
+}
+
+.word-sapace-medium {
+    word-spacing: .2rem;
+    letter-spacing: .05rem;
+}
+
+#todoPage>nav {
+    height: 3rem;
+}
+
+#logoutBtn {
+    font-size: 2rem;
+    transition: all .2s ease;
+}
+
+
+#logoutBtn:hover {
+    font-size: 2.2rem;
+}
