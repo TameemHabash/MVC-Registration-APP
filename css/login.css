@@ -3,17 +3,21 @@ body {
 }
 
 .login {
-    width: 40%;
+    width: 35%;
     height: 90%;
     background-color: white;
     border-radius: .25rem;
+}
+
+.login .form-group {
+    width: 50%;
 }
 
 .signup-btn {
     text-decoration: none;
     border-radius: .25rem;
     color: #17a2b8 !important;
-    padding: .5rem 2rem;
+    padding: .5rem 3rem;
     transition: all .4s ease;
     cursor: pointer;
     border: 1px solid transparent;
@@ -24,7 +28,7 @@ body {
     border-color: #117b8b50;
     border-radius: .25rem;
     color: white !important;
-    padding: .5rem 2rem;
+    padding: .5rem 2.5rem;
 }
 
 .signup-btn:focus,
