@@ -57,10 +57,19 @@ getElement('#loginPassword').addEventListener("focusout", function () {
 //         getElement('#loginBtn').classList.remove('disabled');
 //     }
 // });
-
-getElement('#loginBtn').addEventListener('mouseover', function () {
+function loginClick() {
     const emailInput = getElement('#loginEmail').value;
     const passwordInput = getElement('#loginPassword').value;
+    if (emailInput === '' || passwordInput === '') {
+        getElement('#emptyLoginInfoError').classList.remove('d-none');
+
+    } else {
+        getElement('#emptyLoginInfoError').classList.add('d-none');
+        loginProcess(emailInput, passwordInput);
+    }
+    getElement('#loginBtn').removeEventListener('click', loginClick);
+}
+getElement('#loginBtn').addEventListener('mouseover', function () {
     getElement('#loginBtn').classList.remove('disabled');
     getElement('#loginBtn').classList.remove('cursor-default');
 
@@ -68,21 +77,15 @@ getElement('#loginBtn').addEventListener('mouseover', function () {
         getElement('#loginBtn').classList.add('disabled');
         getElement('#loginBtn').classList.add('cursor-default');
     } else {
-        getElement('#loginBtn').addEventListener('click', function () {
-            if (emailInput === '' || passwordInput === '') {
-                getElement('#emptyLoginInfoError').classList.remove('d-none');
-
-            } else {
-                getElement('#emptyLoginInfoError').classList.add('d-none');
-                loginProcess(emailInput, passwordInput);
-            }
-        });
+        getElement('#loginBtn').addEventListener('click', loginClick);
     }
 
 
 });
 
-getElement('#signupFromLoginBtn').addEventListener('click', showSignupPage);
+window.setTimeout(function () {
+    getElement('#signupFromLoginBtn').addEventListener('click', showSignupPage);
+}, 2 * 1000);
 
 function showInvalideEmailError() {
     getElement('#invalideEmailError').classList.remove('d-none');
