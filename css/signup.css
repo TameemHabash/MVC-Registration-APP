@@ -9,8 +9,8 @@
 }
 
 .signup {
-    min-width: 20rem;
-    min-height: 30rem;
+    width: 34%;
+    height: 90%;
     background-color: white;
     border-radius: .25rem;
 }
