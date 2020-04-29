@@ -1,0 +1,39 @@
+<div id="signupPage" class="center vh-100 w-100 flex-column d-none">
+    <div id="signup" class="signup shadow center flex-column px-4 pt-5">
+        <h1 class="text-info mb-lg-5">ToDo</h1>
+
+
+        <div id="signupName" class="form-group d-flex flex-row">
+            <div class="form-group w-50 mb-0 mr-2 d-flex flex-column">
+                <input id="signupFname" type="text" class="form-control" placeholder="First Name">
+                <small id="FnameError" class="text-error d-none">name must be at least 3 letters</small>
+            </div>
+            <div class="form-group w-50 mb-0 ml-2 d-flex flex-column">
+                <input id="signupLname" type="text" class="form-control" placeholder="Last Name">
+                <small id="LnameError" class="text-error d-none">name must be at least 3 letters</small>
+            </div>
+        </div>
+        <div class="form-group w-100">
+            <input id="signupPhone" type="number" class="form-control" placeholder="Mobile Number">
+        </div>
+        <div class="form-group w-100">
+            <input id="signupEmail" type="email" class="form-control" placeholder="Email">
+        </div>
+        <div class="form-group w-100">
+            <input id="signupPassword1" type="password" class="form-control" placeholder="Enter Password">
+            <small id="Password1Error" class="text-error d-none">Password must be at least 6
+                characters</small>
+        </div>
+        <div class="form-group w-100 mb-5">
+            <input id="signupPassword2" type="password" class="form-control" placeholder="re-Enter Password">
+            <small id="Password2NotMatchError" class="text-error d-none">Password not match</small>
+
+        </div>
+        <small id="fullInfoError" class="text-error d-none">Enter Full Info</small>
+        <small id="existAccountError" class="text-error d-none">already have account for this Email, want to
+            <a id="loginFromSignup"
+                class="cursor-pointer text-info text-decoration-none font-weight-bold">login</a></small>
+        <button id="signupBtn" type="submit" class="btn btn-info px-4 mb-5 mt-2">Create</button>
+
+    </div>
+</div>
