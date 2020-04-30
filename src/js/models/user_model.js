@@ -1,7 +1,7 @@
 const usersListKey = "usersKEY";
 
 class User {
-    constructor() {
+    constructor () {
         this.uid = generateAlphabeticString();
         this.fName = '';
         this.lName = '';
@@ -10,7 +10,6 @@ class User {
         this.password = '';
         this.sessionTimeout = 0;
     }
-
 }
 
 function storeUserInLocalStorage(user) {
@@ -78,9 +77,7 @@ function isUserSessionActive() {
     const storedSession = getSession();
     if (storedSession) {
         if (storedSession > getMillisecondsOfNowDate()) {
-            return getUserListFromLocalStorage().find(function (user) {
-                return user.sessionTimeout === storedSession;
-            });
+            return getUserListFromLocalStorage().find((user) => user.sessionTimeout === storedSession);
         }
         else {
             return false;
