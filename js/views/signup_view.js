@@ -5,6 +5,27 @@ let invalidSignupPassword = false;
 
 
 
+function showSignupPage() {
+    getElement('#signupFname').value = '';
+    getElement('#signupLname').value = '';
+    getElement('#signupPhone').value = '';
+    getElement('#signupEmail').value = '';
+    getElement('#signupPassword1').value = '';
+    getElement('#signupPassword2').value = '';
+
+    getElement('#FnameError').classList.add('d-none');
+    getElement('#LnameError').classList.add('d-none');
+    getElement('#Password1Error').classList.add('d-none');
+    getElement('#Password2NotMatchError').classList.add('d-none');
+    getElement('#fullInfoError').classList.add('d-none');
+    getElement('#existAccountError').classList.add('d-none');
+
+
+
+    getElement('#signupPage').classList.remove('d-none');
+    getElement('#loginPage').classList.add('d-none');
+    getElement('#todoPage').classList.add('d-none');
+}
 
 
 
@@ -132,7 +153,7 @@ getElement('#signupBtn').addEventListener('mouseover', function () {
     const lName = getElement('#signupLname').value;
     const phone = getElement('#signupPhone').value;
     const email = getElement('#signupEmail').value.toLowerCase();
-    const password = getElement('#signupPassword1').value;
+    const password = getElement('#signupPassword2').value;
     getElement('#signupBtn').classList.remove('disabled');
     getElement('#signupBtn').classList.remove('cursor-default');
     if (invalidSignupname || invalidSignupPhone || invalidSignupEmail || invalidSignupPassword) {
@@ -152,7 +173,7 @@ getElement('#signupBtn').addEventListener('mouseover', function () {
                 }
                 else {
                     getElement('#existAccountError').classList.add('d-none');
-                    createUserFromUI();
+                    createUserFromUI(fName, lName, email, phone, password);
                     getElement('#signup').innerHTML = '';
                     getElement('#signup').insertAdjacentHTML('beforeend', `<button id="loginToCreatedAccount" class="btn btn-info px-4 mb-5 mt-2">Login to your new account</button>`);
                     getElement('#loginToCreatedAccount').addEventListener('click', showLoginPage);

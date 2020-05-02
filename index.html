@@ -14,23 +14,26 @@
 </head>
 
 <body>
-    <div id="loginPage" class="center vh-100 w-100 flex-column">
-        <div class="login shadow center flex-column">
-            <h1 class="text-info mb-lg-5">ToDo</h1>
-            <div class="form-group">
-                <small id="emptyLoginInfoError" class="text-error d-none">Enter Your Info</small>
+    <div id="page" class="">
+        <div id="loginPage" class="center vh-100 w-100 flex-column">
+            <div class="login shadow center flex-column">
+                <h1 class="text-info mb-lg-5">ToDo</h1>
+                <div class="form-group">
+                    <small id="emptyLoginInfoError" class="text-error d-none">Enter Your Info</small>
 
-                <input id="loginEmail" type="email" class="form-control" placeholder="Enter Your Email"
-                    aria-describedby="emailHelp">
-                <small id="invalideEmailError" class="text-error d-none">Invalide Email</small>
+                    <input id="loginEmail" type="email" class="form-control" placeholder="Enter Your Email"
+                        aria-describedby="emailHelp">
+                    <small id="invalideEmailError" class="text-error d-none">Invalide Email</small>
+                </div>
+                <div class="form-group">
+                    <input id="loginPassword" type="password" class="form-control" placeholder="Password">
+                    <small id="invalidePasswordError" class="text-error d-none">Invalide Password</small>
+                </div>
+                <button id="loginBtn" type="submit" class="btn btn-info px-4 my-5">Login</button>
+                <a id="signupFromLoginBtn" class="signup-btn">Creat Account</a>
             </div>
-            <div class="form-group">
-                <input id="loginPassword" type="password" class="form-control" placeholder="Password">
-                <small id="invalidePasswordError" class="text-error d-none">Invalide Password</small>
-            </div>
-            <button id="loginBtn" type="submit" class="btn btn-info px-4 my-5">Login</button>
-            <a id="signupFromLoginBtn" class="signup-btn">Creat Account</a>
         </div>
+
     </div>
 
     <div id="signupPage" class="center vh-100 w-100 flex-column d-none">
@@ -134,15 +137,30 @@
         </div>
     </div>
 
-    <script async defer src="./js/jquery.js"></script>
-    <script async defer src="./js/all.min.js"></script>
-    <script async defer src="./js/bootstrap.min.js"></script>
-    <script async defer src="./js/utils.js"></script>
-    <script async defer src="./js/main.js"></script>
-    <script async defer src="./js/users.js"></script>
-    <script async defer src="./js/login.js"></script>
-    <script async defer src="./js/signup.js"></script>
-    <script async defer src="./js/todo.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/all.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/utils.js"></script>
+
+
+    <script src="./js/models/login_model.js"></script>
+    <script src="./js/models/signup_model.js"></script>
+    <script src="./js/models/todo_model.js"></script>
+    <script src="./js/models/main_model.js"></script>
+    <script src="./js/models/user_model.js"></script>
+
+
+
+    <script src="./js/views/login_view.js"></script>
+    <script src="./js/controllers/login_controller.js"></script>
+    <script src="./js/controllers/main_controller.js"></script>
+    <script src="./js/controllers/signup_controller.js"></script>
+    <script src="./js/controllers/todo_controller.js"></script>
+    <script src="./js/controllers/user_controller.js"></script>
+
+
+    <script src="./js/views/signup_view.js"></script>
+    <script src="./js/views/todo_view.js"></script>
 
 </body>
 

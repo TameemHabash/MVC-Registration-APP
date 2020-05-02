@@ -13,26 +13,6 @@ class User {
 
 }
 
-function createUserFromUI() {
-    user = new User();
-    user.fName = getElement('#signupFname').value;
-    user.lName = getElement('#signupLname').value;
-    user.email = getElement('#signupEmail').value.toLowerCase();
-    user.phone = getElement('#signupPhone').value;
-    user.password = encode(getElement('#signupPassword2').value);
-
-    storeUserInLocalStorage(user);
-
-    getElement('#signupFname').value = '';
-    getElement('#signupLname').value = '';
-    getElement('#signupPhone').value = '';
-    getElement('#signupEmail').value = '';
-    getElement('#signupPassword1').value = '';
-    getElement('#signupPassword2').value = '';
-
-
-}
-
 function storeUserInLocalStorage(user) {
     parsedUsersList = JSON.parse(localStorage.getItem(usersListKey));
     if (parsedUsersList) {
@@ -80,5 +60,33 @@ function isUserExist(email) {
         else {
             return user;
         }
+    }
+}
+
+function activateUserSession(user) {
+    user.sessionTimeout = getMillisecondsOfOneHourAddedOnNowDate();
+    storeSession(user.sessionTimeout);
+    storeUserInLocalStorage(user);
+}
+
+function deactivateUserSession(user) {
+    user.sessionTimeout = 0;
+    localStorage.setItem(sessionKey, JSON.stringify(user.sessionTimeout));
+}
+
+function isUserSessionActive() {
+    const storedSession = getSession();
+    if (storedSession) {
+        if (storedSession > getMillisecondsOfNowDate()) {
+            return getUserListFromLocalStorage().find(function (user) {
+                return user.sessionTimeout === storedSession;
+            });
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
     }
 }
