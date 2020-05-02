@@ -28,10 +28,30 @@ function getMillisecondsOfOneHourAddedOnNowDate() {
 }
 
 function getMillisecondsOfNowDate() {
-    let dt = new Date();
-    return dt.valueOf();
+    return Date.now();
 }
 
 function encode(str) {
     return window.btoa(str);
+}
+
+function initDate(hours) {
+    const date = new Date();
+    const currentHours = date.getHours();
+    date.setHours(currentHours + hours);
+    return date;
+}
+
+async function fetchTemplate(name) {
+    const response = await fetch(`/src/js/templates/${name}.html`);
+    if (response.ok) {
+        return response.text();
+    }
+    console.error(`Error fetching the template ${name}`);
+}
+
+function convertTextToHtml(text) {
+    const wrapper = document.createElement('div');
+    wrapper.insertAdjacentHTML('beforeend', text);
+    return wrapper.firstElementChild;
 }

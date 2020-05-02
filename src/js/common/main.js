@@ -1,9 +1,12 @@
 
-function refresh() {
+async function refresh() {
     const user = isUserSessionActive();
     if (user) {
         activateUserSession(user);
-        showTodoPage();
+        // showTodoPage();
+
+        clearTemplate();
+        await insertTemplate('todo');
     }
     else {
         userList = getUserListFromLocalStorage();
@@ -17,10 +20,18 @@ function refresh() {
             storeSession(1);
         }
 
-        showLoginPage();
+        clearTemplate();
+        await insertTemplate('login');
     }
 
 }
-window.setTimeout(function () {
-    refresh();
-}, 2 * 1000);
+
+refresh();
+
+async function insertTemplate(name) {
+    document.body.prepend(convertTextToHtml(await fetchTemplate(name)));
+}
+
+function clearTemplate() {
+    document.body.remove();
+}
