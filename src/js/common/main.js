@@ -5,7 +5,7 @@ async function refresh() {
         activateUserSession(user);
         // showTodoPage();
 
-        clearTemplate();
+        clearPageTemplate();
         await insertTemplate('todo');
     }
     else {
@@ -20,7 +20,7 @@ async function refresh() {
             storeSession(1);
         }
 
-        clearTemplate();
+        clearPageTemplate();
         await insertTemplate('login');
     }
 
@@ -29,10 +29,10 @@ async function refresh() {
 refresh();
 
 async function insertTemplate(name) {
-    document.getElementById('page').prepend(convertTextToHtml(await fetchTemplate(name)));
+    document.getElementById('page').prepend(convertTextToHtml(await fetchPageTemplate(name)));
 }
 
-async function fetchTemplate(name) {
+async function fetchPageTemplate(name) {
     const response = await fetch(`./src/templates/${name}.html`);
     if (response.ok) {
         return response.text();
