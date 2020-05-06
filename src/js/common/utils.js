@@ -42,13 +42,6 @@ function initDate(hours) {
     return date;
 }
 
-async function fetchTemplate(name) {
-    const response = await fetch(`/src/js/templates/${name}.html`);
-    if (response.ok) {
-        return response.text();
-    }
-    console.error(`Error fetching the template ${name}`);
-}
 
 function convertTextToHtml(text) {
     const wrapper = document.createElement('div');

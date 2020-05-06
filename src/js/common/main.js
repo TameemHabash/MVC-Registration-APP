@@ -29,9 +29,17 @@ async function refresh() {
 refresh();
 
 async function insertTemplate(name) {
-    document.body.prepend(convertTextToHtml(await fetchTemplate(name)));
+    document.getElementById('page').prepend(convertTextToHtml(await fetchTemplate(name)));
 }
 
-function clearTemplate() {
-    document.body.remove();
+async function fetchTemplate(name) {
+    const response = await fetch(`./src/templates/${name}.html`);
+    if (response.ok) {
+        return response.text();
+    } else {
+        console.error(`Error fetching the templete ${name}`);
+    }
 }
+function clearPageTemplate() {
+    document.getElementById('page').innerHTML = '';
+} 
