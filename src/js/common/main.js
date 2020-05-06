@@ -1,5 +1,5 @@
 
-async function refresh() {
+async function init() {
     const user = isUserSessionActive();
     if (user) {
         activateUserSession(user);
@@ -26,7 +26,7 @@ async function refresh() {
 
 }
 
-refresh();
+init();
 
 async function insertTemplate(name) {
     document.getElementById('page').prepend(convertTextToHtml(await fetchPageTemplate(name)));
