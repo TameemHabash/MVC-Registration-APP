@@ -36,7 +36,11 @@ async function showLoginPage() {
     await insertTemplate('login');
 }
 
-
+async function showTodoPage() {
+    clearPageTemplate();
+    await insertTemplate('todo');
+    loadTodoPage_view();
+}
 async function insertTemplate(name) {
     document.getElementById('page').prepend(putTextIntoDiv(await fetchPageTemplate(name)));
 }

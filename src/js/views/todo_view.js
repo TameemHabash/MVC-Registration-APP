@@ -67,13 +67,6 @@ class TodoElement {
 
 }
 
-function showTodoPage() {
-    getElement('#todoPage').classList.remove('d-none');
-    getElement('#signupPage').classList.add('d-none');
-    getElement('#loginPage').classList.add('d-none');
-    loadTodoPage_view();
-}
-
 function toggleCompletion(todo, id, completeBtnID) {
     todo.completed = todo.completed ? false : true;
     getElement('#' + completeBtnID).innerHTML = todo.completed ? `<i class="fas fa-check-circle"></i>` : "Complete";
