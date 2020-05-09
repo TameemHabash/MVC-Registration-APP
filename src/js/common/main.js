@@ -29,15 +29,16 @@ async function init() {
 init();
 
 async function insertTemplate(name) {
-    document.getElementById('page').prepend(convertTextToHtml(await fetchPageTemplate(name)));
+    document.getElementById('page').prepend(putTextIntoDiv(await fetchPageTemplate(name)));
 }
 
 async function fetchPageTemplate(name) {
-    const response = await fetch(`./src/templates/${name}.html`);
+
+    const response = await fetch(`./templates/${name}.html`);
     if (response.ok) {
         return response.text();
     } else {
-        console.error(`Error fetching the templete ${name}`);
+        console.error(`Error fetching  ${name} templete`);
     }
 }
 function clearPageTemplate() {

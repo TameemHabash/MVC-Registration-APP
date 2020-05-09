@@ -43,8 +43,8 @@ function initDate(hours) {
 }
 
 
-function convertTextToHtml(text) {
+function putTextIntoDiv(text) {
     const wrapper = document.createElement('div');
     wrapper.insertAdjacentHTML('beforeend', text);
-    return wrapper.firstElementChild;
+    return wrapper;
 }
