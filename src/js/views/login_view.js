@@ -49,14 +49,14 @@ getElement('#loginPassword').addEventListener("focusout", function () {
     }
 });
 
-// getElement('#loginBtn').addEventListener('mouseover', function () {
-//     if (invalidLoginPassword || invalidLoginEmail) {
-//         getElement('#loginBtn').classList.add('disabled');
-//     }
-//     else {
-//         getElement('#loginBtn').classList.remove('disabled');
-//     }
-// });
+getElement('#loginBtn').addEventListener('mouseover', function () {
+    if (invalidLoginPassword || invalidLoginEmail) {
+        getElement('#loginBtn').classList.add('disabled');
+    }
+    else {
+        getElement('#loginBtn').classList.remove('disabled');
+    }
+});
 function loginClick() {
     const emailInput = getElement('#loginEmail').value;
     const passwordInput = getElement('#loginPassword').value;
