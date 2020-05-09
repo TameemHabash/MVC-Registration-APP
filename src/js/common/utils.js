@@ -43,11 +43,3 @@ function initDate(hours) {
 }
 
 
-function putTextIntoDiv(text) {
-    let parser = new DOMParser();
-    let doc = parser.parseFromString(text, 'text/html');
-    return doc.body;
-    // const wrapper = document.createElement('div');
-    // wrapper.insertAdjacentHTML('beforeend', text);
-    // return wrapper.innerHTML;
-}
