@@ -83,9 +83,8 @@ getElement('#loginBtn').addEventListener('mouseover', function () {
 
 });
 
-window.setTimeout(function () {
-    getElement('#signupFromLoginBtn').addEventListener('click', showSignupPage);
-}, 2 * 1000);
+
+getElement('#signupFromLoginBtn').addEventListener('click', showSignupPage);
 
 function showInvalideEmailError() {
     getElement('#invalideEmailError').classList.remove('d-none');
