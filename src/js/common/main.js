@@ -5,8 +5,7 @@ async function init() {
         activateUserSession(user);
         // showTodoPage();
 
-        clearPageTemplate();
-        await insertTemplate('todo');
+        await showTodoPage();
     }
     else {
         userList = getUserListFromLocalStorage();
@@ -20,8 +19,7 @@ async function init() {
             storeSession(1);
         }
 
-        clearPageTemplate();
-        await insertTemplate('login');
+        await showLoginPage();
     }
 
 }
@@ -41,6 +39,7 @@ async function showTodoPage() {
     await insertTemplate('todo');
     loadTodoPage_view();
 }
+
 async function insertTemplate(name) {
     document.getElementById('page').prepend(putTextIntoDiv(await fetchPageTemplate(name)));
 }
@@ -54,6 +53,7 @@ async function fetchPageTemplate(name) {
         console.error(`Error fetching  ${name} templete`);
     }
 }
+
 function clearPageTemplate() {
     document.getElementById('page').innerHTML = '';
 }
