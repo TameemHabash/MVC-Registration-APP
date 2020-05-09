@@ -41,7 +41,7 @@ async function showTodoPage() {
 }
 
 async function insertTemplate(name) {
-    document.getElementById('page').prepend(putTextIntoDiv(await fetchPageTemplate(name)));
+    document.getElementById('page').innerHTML = await fetchPageTemplate(name);
 }
 
 async function fetchPageTemplate(name) {
