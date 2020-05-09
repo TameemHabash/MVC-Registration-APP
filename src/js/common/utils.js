@@ -51,3 +51,19 @@ function putTextIntoDiv(text) {
     // wrapper.insertAdjacentHTML('beforeend', text);
     // return wrapper.innerHTML;
 }
+
+
+async function fetchPageTemplate(name) {
+    const response = await fetch(`./templates/${name}.html`);
+    if (response.ok) {
+        return response.text();
+    } else {
+        console.error(`Error fetching  ${name} templete`);
+    }
+}
+
+function createScript(src) {
+    const script = document.createElement('script');
+    script.src = src;
+    return script;
+}
