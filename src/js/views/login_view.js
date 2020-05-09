@@ -3,22 +3,6 @@ let invalidLoginEmail = false;
 let invalidLoginPassword = false;
 
 
-
-function showLoginPage() {
-    getElement('#loginEmail').value = '';
-    getElement('#loginPassword').value = '';
-
-    getElement('#emptyLoginInfoError').classList.add('d-none');
-    getElement('#invalideEmailError').classList.add('d-none');
-    getElement('#invalidePasswordError').classList.add('d-none');
-
-
-    getElement('#loginPage').classList.remove('d-none');
-    getElement('#signupPage').classList.add('d-none');
-    getElement('#todoPage').classList.add('d-none');
-
-}
-
 getElement('#loginEmail').addEventListener("focusout", function () {
     const input = getElement('#loginEmail').value.toLowerCase();
     if (input !== '') {
