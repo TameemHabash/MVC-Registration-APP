@@ -33,15 +33,8 @@ getElement('#loginPassword').addEventListener("focusout", function () {
     }
 });
 
-getElement('#loginBtn').addEventListener('mouseover', function () {
-    if (invalidLoginPassword || invalidLoginEmail) {
-        getElement('#loginBtn').classList.add('disabled');
-    }
-    else {
-        getElement('#loginBtn').classList.remove('disabled');
-    }
-});
 function loginClick() {
+    const loginBtn = getElement('#loginBtn');
     const emailInput = getElement('#loginEmail').value;
     const passwordInput = getElement('#loginPassword').value;
     if (emailInput === '' || passwordInput === '') {
@@ -51,17 +44,18 @@ function loginClick() {
         getElement('#emptyLoginInfoError').classList.add('d-none');
         loginProcess(emailInput, passwordInput);
     }
-    getElement('#loginBtn').removeEventListener('click', loginClick);
+    loginBtn.removeEventListener('click', loginClick);
 }
 getElement('#loginBtn').addEventListener('mouseover', function () {
-    getElement('#loginBtn').classList.remove('disabled');
-    getElement('#loginBtn').classList.remove('cursor-default');
+    const loginBtn = getElement('#loginBtn');
+    loginBtn.classList.remove('disabled');
+    loginBtn.classList.remove('cursor-default');
 
     if (invalidLoginPassword || invalidLoginEmail) {
-        getElement('#loginBtn').classList.add('disabled');
-        getElement('#loginBtn').classList.add('cursor-default');
+        loginBtn.classList.add('disabled');
+        loginBtn.classList.add('cursor-default');
     } else {
-        getElement('#loginBtn').addEventListener('click', loginClick);
+        loginBtn.addEventListener('click', loginClick);
     }
 
 

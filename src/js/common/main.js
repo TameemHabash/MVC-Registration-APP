@@ -24,38 +24,19 @@ async function init() {
 
 }
 
-async function showSignupPage() {
-    clearPageTemplate();
-    await insertTemplate('signup');
-}
-
-async function showLoginPage() {
-    clearPageTemplate();
-    await insertTemplate('login');
-}
-
-async function showTodoPage() {
-    clearPageTemplate();
-    await insertTemplate('todo');
-    loadTodoPage_view();
-}
-
 async function insertTemplate(name) {
-    document.getElementById('page').innerHTML = await fetchPageTemplate(name);
-}
-
-async function fetchPageTemplate(name) {
-
-    const response = await fetch(`./templates/${name}.html`);
-    if (response.ok) {
-        return response.text();
-    } else {
-        console.error(`Error fetching  ${name} templete`);
-    }
+    const page = document.getElementById('page');
+    page.insertAdjacentHTML('afterbegin', await fetchPageTemplate(name));
+    const scripts = Array.from(page.querySelectorAll('script'));
+    scripts.forEach((script) => {
+        script.remove();
+        page.insertAdjacentElement('afterbegin', createScript(script.src));
+    });
 }
 
 function clearPageTemplate() {
     document.getElementById('page').innerHTML = '';
 }
+
 
 init();
