@@ -25,16 +25,20 @@ async function init() {
 }
 
 async function insertTemplate(name) {
-    const page = document.getElementById('page');
     page.insertAdjacentHTML('afterbegin', await fetchPageTemplate(name));
     const scripts = Array.from(page.querySelectorAll('script'));
     scripts.forEach((script) => {
         script.remove();
-        page.insertAdjacentElement('afterbegin', createScript(script.src));
+        page.insertAdjacentElement('beforeend', createScript(script.src));
     });
 }
 
 function clearPageTemplate() {
+    const page = document.getElementById('page');
+    const scripts = Array.from(page.querySelectorAll('script'));
+    scripts.forEach((script) => {
+        script.remove();
+    });
     document.getElementById('page').innerHTML = '';
 }
 
