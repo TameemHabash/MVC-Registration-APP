@@ -26,7 +26,16 @@ async function init() {
 
 }
 
-init();
+async function showSignupPage() {
+    clearPageTemplate();
+    await insertTemplate('signup');
+}
+
+async function showLoginPage() {
+    clearPageTemplate();
+    await insertTemplate('login');
+}
+
 
 async function insertTemplate(name) {
     document.getElementById('page').prepend(putTextIntoDiv(await fetchPageTemplate(name)));
@@ -43,4 +52,6 @@ async function fetchPageTemplate(name) {
 }
 function clearPageTemplate() {
     document.getElementById('page').innerHTML = '';
-} 
+}
+
+init();

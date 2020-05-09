@@ -4,32 +4,6 @@ let invalidSignupEmail = false;
 let invalidSignupPassword = false;
 
 
-
-function showSignupPage() {
-    getElement('#signupFname').value = '';
-    getElement('#signupLname').value = '';
-    getElement('#signupPhone').value = '';
-    getElement('#signupEmail').value = '';
-    getElement('#signupPassword1').value = '';
-    getElement('#signupPassword2').value = '';
-
-    getElement('#FnameError').classList.add('d-none');
-    getElement('#LnameError').classList.add('d-none');
-    getElement('#Password1Error').classList.add('d-none');
-    getElement('#Password2NotMatchError').classList.add('d-none');
-    getElement('#fullInfoError').classList.add('d-none');
-    getElement('#existAccountError').classList.add('d-none');
-
-
-
-    getElement('#signupPage').classList.remove('d-none');
-    getElement('#loginPage').classList.add('d-none');
-    getElement('#todoPage').classList.add('d-none');
-}
-
-
-
-
 getElement('#signupFname').addEventListener('focusout', function () {
     const fName = getElement('#signupFname').value;
     if (fName !== '') {
