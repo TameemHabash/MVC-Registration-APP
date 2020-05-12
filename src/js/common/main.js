@@ -25,21 +25,31 @@ async function init() {
 }
 
 async function insertTemplate(name) {
+    const page = getElement('#page');
     page.insertAdjacentHTML('afterbegin', await fetchPageTemplate(name));
     const scripts = Array.from(page.querySelectorAll('script'));
-    scripts.forEach((script) => {
+    for (const script of scripts) {
         script.remove();
-        page.insertAdjacentElement('beforeend', createScript(script.src));
+        await addScript(script);
+    }
+}
+function addScript(script) {
+    const page = getElement('#page');
+    return new Promise((resolve) => {
+        const newScript = createScript(script.src);
+        page.insertAdjacentElement('beforeend', newScript);
+        newScript.addEventListener('load', resolve);
     });
 }
 
 function clearPageTemplate() {
-    const page = document.getElementById('page');
+    const page = getElement('#page');
     const scripts = Array.from(page.querySelectorAll('script'));
     scripts.forEach((script) => {
+
         script.remove();
     });
-    document.getElementById('page').innerHTML = '';
+    getElement('#page').innerHTML = '';
 }
 
 
