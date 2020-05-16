@@ -1,5 +1,5 @@
-const categoriesListKey = "categoriesListKey";
-const todosListKey = "todosListKey";
+var categoriesListKey = "categoriesListKey";
+var todosListKey = "todosListKey";
 
 class Category {
     constructor(title) {
@@ -46,7 +46,7 @@ function getActiveCategory() {
         return category.active;
     });
 }
-function getAllTodos(category) {
+function getAllTodos_model(category) {
     const todosList = getTodosListFromStore();
     if (isArrayHasItems(todosList)) {
         return todosList.filter(function (todo) {
@@ -58,7 +58,7 @@ function getAllTodos(category) {
     }
 }
 
-function getCompletedTodos(category) {
+function getCompletedTodos_model(category) {
     const todosList = getTodosListFromStore();
     if (isArrayHasItems(todosList)) {
         return todosList.filter(function (todo) {
@@ -70,7 +70,7 @@ function getCompletedTodos(category) {
     }
 }
 
-function getNotCompletedTodos(category) {
+function getNotCompletedTodos_model(category) {
     const todosList = getTodosListFromStore();
     if (isArrayHasItems(todosList)) {
         return todosList.filter(function (todo) {
@@ -91,7 +91,7 @@ function getCategoriesListFromStore() {
     if (isArrayHasItems(parsedCategoriesList)) {
 
         const categoreiesList = parsedCategoriesList.map(function (parsedCategory) {
-            category = new Category(parsedCategory.title);
+            const category = new Category(parsedCategory.title);
             category.cid = parsedCategory.cid;
             category.uid = parsedCategory.uid;
             category.active = parsedCategory.active;
@@ -174,7 +174,7 @@ function getActiveCategoryTodosListFromStore() {
     const TodosList = getTodosListFromStore();
     if (isArrayHasItems(TodosList)) {
         const activeCategory = getActiveCategory();
-        ActiveCategoryTodosList = TodosList.filter(function (Todo) {
+        const ActiveCategoryTodosList = TodosList.filter(function (Todo) {
             return Todo.cid === activeCategory.cid;
         });
         return ActiveCategoryTodosList;
@@ -197,4 +197,4 @@ function restSession() {
     storeSession(1);
 }
 
-let categoriesList = getCategoriesListFromStore();
+var categoriesList = getCategoriesListFromStore();

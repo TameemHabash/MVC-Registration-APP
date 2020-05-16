@@ -49,6 +49,34 @@ function refreshTodos() {
     }
 }
 
+function getAllTodos_controller(category) {
+    if (category) {
+        return getAllTodos_model(category);
+    }
+    else {
+        return [];
+    }
+}
+
+function getCompletedTodos_controller(category) {
+    if (category) {
+        return getCompletedTodos_model(category);
+    }
+    else {
+        return [];
+    }
+}
+
+function getNotCompletedTodos_controller(category) {
+    if (category) {
+        return getNotCompletedTodos_model(category);
+    }
+    else {
+        return [];
+    }
+}
+
+
 function loadTodoPage_controller() {
     categoriesList.forEach(function (category) {
         category.active = false;

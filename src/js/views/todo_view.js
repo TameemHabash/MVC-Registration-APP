@@ -107,7 +107,7 @@ function allTodosShow() {
     category = getActiveCategory();
     if (category) {
         getElement('#todoList').innerHTML = '';
-        getAllTodos(category).forEach(function (todo) {
+        getAllTodos_controller(category).forEach(function (todo) {
             new TodoElement(todo);
         });
     }
@@ -120,7 +120,7 @@ function completedTodosShow() {
     category = getActiveCategory();
     if (category) {
         getElement('#todoList').innerHTML = '';
-        getCompletedTodos(category).forEach(function (todo) {
+        getCompletedTodos_controller(category).forEach(function (todo) {
             new TodoElement(todo);
         });
     }
@@ -133,7 +133,7 @@ function notCompletedTodosShow() {
     category = getActiveCategory();
     if (category) {
         getElement('#todoList').innerHTML = '';
-        getNotCompletedTodos(category).forEach(function (todo) {
+        getNotCompletedTodos_controller(category).forEach(function (todo) {
             new TodoElement(todo);
         });
     }
