@@ -67,3 +67,12 @@ function createScript(src) {
     script.src = src;
     return script;
 }
+
+function addScriptSynchronously(script) {
+    const page = getElement('#page');
+    return new Promise((resolve) => {
+        const newScript = createScript(script.src);
+        page.insertAdjacentElement('beforeend', newScript);
+        newScript.addEventListener('load', resolve);
+    });
+}

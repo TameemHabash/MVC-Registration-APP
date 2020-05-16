@@ -184,3 +184,5 @@ getElement('#logoutBtn').addEventListener('click', function () {
 
     showLoginPage();
 });
+
+loadTodoPage();

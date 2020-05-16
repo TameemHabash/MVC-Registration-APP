@@ -30,16 +30,8 @@ async function insertTemplate(name) {
     const scripts = Array.from(page.querySelectorAll('script'));
     for (const script of scripts) {
         script.remove();
-        await addScript(script);
+        page.appendChild(createScript(script.src));
     }
-}
-function addScript(script) {
-    const page = getElement('#page');
-    return new Promise((resolve) => {
-        const newScript = createScript(script.src);
-        page.insertAdjacentElement('beforeend', newScript);
-        newScript.addEventListener('load', resolve);
-    });
 }
 
 function clearPageTemplate() {
