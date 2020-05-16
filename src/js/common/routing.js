@@ -11,5 +11,5 @@ async function showLoginPage() {
 async function showTodoPage() {
     clearPageTemplate();
     await insertTemplate('todo');
-    loadTodoPage_view();
+    loadTodoPage();
 }

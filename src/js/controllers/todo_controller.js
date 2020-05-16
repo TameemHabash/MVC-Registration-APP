@@ -80,19 +80,15 @@ function getNotCompletedTodos_controller() {
 }
 
 
-function loadTodoPage_controller() {
+function getActiveUserCategoriesList_controller() {
     categoriesList.forEach(function (category) {
         category.active = false;
     });
     storeCategoriesList();
-    ActiveUserCategories = getActiveUserCategoriesList();
-    if (isArrayHasItems(ActiveUserCategories)) {
-        ActiveUserCategories.forEach(function (category) {
-            new CategoryElement(category);
-        });
-        allTodosShow();
-        // categoriesList.forEach(function (category) {
-        //     category.deactivate();
-        // });
+    const activeUserCategories = getActiveUserCategoriesList();
+    if (isArrayHasItems(activeUserCategories)) {
+        return activeUserCategories;
+    } else {
+        return [];
     }
 }

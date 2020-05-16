@@ -139,10 +139,17 @@ function notCompletedTodosShow() {
     }
 }
 
-function loadTodoPage_view() {
+function loadTodoPage() {
     getElement('#categoriesList').innerHTML = '';
     getElement('#todoList').innerHTML = '';
-    loadTodoPage_controller();
+    const ActiveUserCategories = getActiveUserCategoriesList_controller();
+
+    if (isArrayHasItems(ActiveUserCategories)) {
+        ActiveUserCategories.forEach(function (category) {
+            new CategoryElement(category);
+        });
+        allTodosShow();
+    }
 }
 
 getElement('#allTodosBtn').addEventListener('click', allTodosShow);
