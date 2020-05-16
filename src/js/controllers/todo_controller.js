@@ -49,7 +49,8 @@ function refreshTodos() {
     }
 }
 
-function getAllTodos_controller(category) {
+function getAllTodos_controller() {
+    const category = getActiveCategory();
     if (category) {
         return getAllTodos_model(category);
     }
@@ -58,7 +59,8 @@ function getAllTodos_controller(category) {
     }
 }
 
-function getCompletedTodos_controller(category) {
+function getCompletedTodos_controller() {
+    const category = getActiveCategory();
     if (category) {
         return getCompletedTodos_model(category);
     }
@@ -67,7 +69,8 @@ function getCompletedTodos_controller(category) {
     }
 }
 
-function getNotCompletedTodos_controller(category) {
+function getNotCompletedTodos_controller() {
+    const category = getActiveCategory();
     if (category) {
         return getNotCompletedTodos_model(category);
     }

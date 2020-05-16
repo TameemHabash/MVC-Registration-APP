@@ -104,10 +104,10 @@ function allTodosShow() {
     allTodosView = true;
     completedTodosView = false;
     notCompletedTodosView = false;
-    category = getActiveCategory();
-    if (category) {
+    const allTodos = getAllTodos_controller();
+    if (allTodos) {
         getElement('#todoList').innerHTML = '';
-        getAllTodos_controller(category).forEach(function (todo) {
+        allTodos.forEach(function (todo) {
             new TodoElement(todo);
         });
     }
@@ -117,10 +117,10 @@ function completedTodosShow() {
     allTodosView = false;
     completedTodosView = true;
     notCompletedTodosView = false;
-    category = getActiveCategory();
+    const completedTodos = getCompletedTodos_controller();
     if (category) {
         getElement('#todoList').innerHTML = '';
-        getCompletedTodos_controller(category).forEach(function (todo) {
+        completedTodos.forEach(function (todo) {
             new TodoElement(todo);
         });
     }
@@ -130,10 +130,10 @@ function notCompletedTodosShow() {
     allTodosView = false;
     completedTodosView = false;
     notCompletedTodosView = true;
-    category = getActiveCategory();
+    const notCompletedTodos = getNotCompletedTodos_controller();
     if (category) {
         getElement('#todoList').innerHTML = '';
-        getNotCompletedTodos_controller(category).forEach(function (todo) {
+        notCompletedTodos.forEach(function (todo) {
             new TodoElement(todo);
         });
     }
