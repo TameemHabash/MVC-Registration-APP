@@ -106,7 +106,7 @@ function getCategoriesListFromStore() {
 function getActiveUserCategoriesList() {
 
     if (isArrayHasItems(categoriesList)) {
-        activeUser = isUserSessionActive();
+        activeUser = activeSessionUser();
         if (activeUser) {
             const ActiveUserCategoriesList = categoriesList.filter(function (Category) {
                 return Category.uid === activeUser.uid;

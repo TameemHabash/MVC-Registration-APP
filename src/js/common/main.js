@@ -1,6 +1,6 @@
 
 async function init() {
-    const user = isUserSessionActive();
+    const user = activeSessionUser();
     if (user) {
         activateUserSession(user);
         // showTodoPage();

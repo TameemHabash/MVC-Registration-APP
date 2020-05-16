@@ -3,7 +3,7 @@
 function createCategoryFromUI(title) {
 
     if (title !== '') {
-        activeUser = isUserSessionActive();
+        activeUser = activeSessionUser();
         let category = new Category(title);
         category.cid = generateAlphabeticString();
         category.uid = activeUser.uid;

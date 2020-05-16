@@ -1,7 +1,7 @@
 const usersListKey = "usersKEY";
 
 class User {
-    constructor () {
+    constructor() {
         this.uid = generateAlphabeticString();
         this.fName = '';
         this.lName = '';
@@ -73,7 +73,7 @@ function deactivateUserSession(user) {
     localStorage.setItem(sessionKey, JSON.stringify(user.sessionTimeout));
 }
 
-function isUserSessionActive() {
+function activeSessionUser() {
     const storedSession = getSession();
     if (storedSession) {
         if (storedSession > getMillisecondsOfNowDate()) {
