@@ -185,4 +185,14 @@ getElement('#logoutBtn').addEventListener('click', function () {
     showLoginPage();
 });
 
+// // (function waitUntlPageIsFullyLoaded() {
+// //     const page = getElement('#page');
+// //     const scripts = Array.from(page.querySelectorAll('script'));
+// //     const view = scripts.find(script => script.scr == './js/views/todo_view.js');
+// //     view.addEventListener('load', loadTodoPage);
+// // })();
+
+// window.addEventListener('load', (e) => {
+//     loadTodoPage();
+// });
 loadTodoPage();

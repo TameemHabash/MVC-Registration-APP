@@ -65,6 +65,7 @@ async function fetchPageTemplate(name) {
 function createScript(src) {
     const script = document.createElement('script');
     script.src = src;
+    script.defer = script.defer;
     return script;
 }
 
