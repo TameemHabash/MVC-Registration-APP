@@ -92,3 +92,7 @@ function getActiveUserCategoriesList_controller() {
         return [];
     }
 }
+
+function restSession_controller() {
+    restSession();
+}

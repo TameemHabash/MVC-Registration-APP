@@ -180,7 +180,7 @@ getElement('#addCategoryBtn').addEventListener('click', function () {
 });
 
 getElement('#logoutBtn').addEventListener('click', function () {
-    restSession();
+    restSession_controller();
 
     showLoginPage();
 });
