@@ -118,7 +118,7 @@ function completedTodosShow() {
     completedTodosView = true;
     notCompletedTodosView = false;
     const completedTodos = getCompletedTodos_controller();
-    if (category) {
+    if (completedTodos) {
         getElement('#todoList').innerHTML = '';
         completedTodos.forEach(function (todo) {
             new TodoElement(todo);
@@ -131,7 +131,7 @@ function notCompletedTodosShow() {
     completedTodosView = false;
     notCompletedTodosView = true;
     const notCompletedTodos = getNotCompletedTodos_controller();
-    if (category) {
+    if (notCompletedTodos) {
         getElement('#todoList').innerHTML = '';
         notCompletedTodos.forEach(function (todo) {
             new TodoElement(todo);
