@@ -1,5 +1,5 @@
 function checkUserData(emailInput, passwordInput) {
-    validity = {
+    const validity = {
         existEmail: false,
         rightPassword: false,
         user: false

@@ -1,5 +1,5 @@
-var categoriesListKey = "categoriesListKey";
-var todosListKey = "todosListKey";
+let categoriesListKey = "categoriesListKey";
+let todosListKey = "todosListKey";
 
 class Category {
     constructor(title) {
@@ -86,7 +86,7 @@ function storeCategoriesList() {
 }
 
 function getCategoriesListFromStore() {
-    parsedCategoriesList = JSON.parse(localStorage.getItem(categoriesListKey));
+    const parsedCategoriesList = JSON.parse(localStorage.getItem(categoriesListKey));
 
     if (isArrayHasItems(parsedCategoriesList)) {
 
@@ -106,7 +106,7 @@ function getCategoriesListFromStore() {
 function getActiveUserCategoriesList() {
 
     if (isArrayHasItems(categoriesList)) {
-        activeUser = activeSessionUser();
+        const activeUser = activeSessionUser();
         if (activeUser) {
             const ActiveUserCategoriesList = categoriesList.filter(function (Category) {
                 return Category.uid === activeUser.uid;
@@ -122,7 +122,7 @@ function getActiveUserCategoriesList() {
 
 
 function storeTodoInLocalStorage(todo) {
-    parsedTodosList = JSON.parse(localStorage.getItem(todosListKey));
+    const parsedTodosList = JSON.parse(localStorage.getItem(todosListKey));
     if (isArrayHasItems(parsedTodosList)) {
         if (isTodoExist(todo.title)) {
             storedTodoIndex = parsedTodosList.findIndex(function (storedTodo) {
@@ -140,7 +140,7 @@ function storeTodoInLocalStorage(todo) {
 }
 
 function isTodoExist(title) {
-    storedTodosList = getTodosListFromStore();
+    const storedTodosList = getTodosListFromStore();
     if (isArrayHasItems(storedTodosList)) {
         const todo = storedTodosList.find(function (todo) {
             return todo.title === title;
@@ -156,7 +156,7 @@ function isTodoExist(title) {
 }
 
 function getTodosListFromStore() {
-    parsedTodosList = JSON.parse(localStorage.getItem(todosListKey));
+    const parsedTodosList = JSON.parse(localStorage.getItem(todosListKey));
     if (isArrayHasItems(parsedTodosList)) {
         TodosList = parsedTodosList.map(function (parsedTodo) {
             todo = new Todo(parsedTodo.title, parsedTodo.completed);
@@ -185,7 +185,7 @@ function getActiveCategoryTodosListFromStore() {
 }
 
 function restSession() {
-    userList = getUserListFromLocalStorage();
+    const userList = getUserListFromLocalStorage();
     if (isArrayHasItems(userList)) {
         userList.forEach(function (user) {
             user.sessionTimeout = 0;
@@ -197,4 +197,4 @@ function restSession() {
     storeSession(1);
 }
 
-var categoriesList = getCategoriesListFromStore();
+let categoriesList = getCategoriesListFromStore();
