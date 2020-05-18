@@ -140,7 +140,7 @@ function notCompletedTodosShow() {
 }
 
 function loadTodoPage() {
-    getElement('#categoriesList').innerHTML = '';
+    categoriesListElement.innerHTML = '';
     getElement('#todoList').innerHTML = '';
     const ActiveUserCategories = getActiveUserCategoriesList_controller();
 
