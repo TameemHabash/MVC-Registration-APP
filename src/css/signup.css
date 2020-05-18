@@ -10,6 +10,7 @@
 
 .signup {
     width: 34%;
+    max-width: 583px;
     height: 90%;
     background-color: white;
     border-radius: .25rem;
