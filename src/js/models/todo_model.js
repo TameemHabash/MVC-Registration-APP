@@ -111,6 +111,9 @@
         if (isArrayHasItems(categoriesList)) {
             const activeUser = activeSessionUser();
             if (activeUser) {
+                categoriesList.forEach(function (category) {
+                    category.active = false;
+                });
                 const ActiveUserCategoriesList = categoriesList.filter(function (Category) {
                     return Category.uid === activeUser.uid;
                 });

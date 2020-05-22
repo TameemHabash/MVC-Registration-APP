@@ -81,9 +81,6 @@
 
 
     const getActiveUserCategoriesList_controller = function getActiveUserCategoriesList_controller() {
-        categoriesList.forEach(function (category) {
-            category.active = false;
-        });
         storeCategoriesList();
         const activeUserCategories = getActiveUserCategoriesList();
         if (isArrayHasItems(activeUserCategories)) {
