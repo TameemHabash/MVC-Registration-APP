@@ -1,10 +1,10 @@
-(function todoView() {
+function todoView() {
 
     let categoriesListElement = getElement('#categoriesList');
     let allTodosView = true;
     let completedTodosView = false;
     let notCompletedTodosView = false;
-    const todoController = todoController();
+
     class CategoryElement {
         constructor(category) {
             this.category = category;
@@ -18,9 +18,11 @@
             const category = this.category;
             const id = this._id;
             getElement("#categoriesList").insertAdjacentHTML('beforeend', this.getLiElementText());
-            todoController.activateCategory_controller(category, id);
+            controller.activateCategory_controller(category);
+            activateCategory_view(id);
             getElement('#' + id).addEventListener('click', function () {
-                todoController.activateCategory_controller(category, id);
+                controller.activateCategory_controller(category);
+                activateCategory_view(id);
                 allTodosShow();
             });
         }
@@ -47,8 +49,8 @@
             getElement('#todoList').insertAdjacentHTML('beforeend', this.getLiElementText());
             getElement('#' + completeBtnID).addEventListener('click', function () {
                 toggleCompletion(todo, id, completeBtnID);
-                storeTodoInLocalStorage(todo);
-                todoController.refreshTodos();
+                controller.storeTodo(todo);
+                refreshTodos();
 
             });
         }
@@ -92,21 +94,27 @@
         new TodoElement(todo);
     }
 
-    function activateCategory_view(id) {
+    const activateCategory_view = function activateCategory_view(id) {
+        deactivateAllCategories_view();
         getElement('#' + id).classList.add('category-bg');
         getElement('#' + id).classList.remove('text-muted');
     }
 
-    function deactivateCategory_view(activeCategory) {
-        getElement('#' + activeCategory.cid).classList.remove('category-bg');
-        getElement('#' + activeCategory.cid).classList.add('text-muted');
+    const deactivateAllCategories_view = function deactivateCategory_view() {
+        const categoriesElementList = Array.from(categoriesListElement.querySelectorAll('li'));
+        if (isArrayHasItems(categoriesElementList)) {
+            categoriesElementList.forEach(categoryElement => {
+                categoryElement.classList.remove('category-bg');
+                categoryElement.classList.add('text-muted');
+            });
+        }
     }
 
     function allTodosShow() {
         allTodosView = true;
         completedTodosView = false;
         notCompletedTodosView = false;
-        const allTodos = todoController.getAllTodos_controller();
+        const allTodos = controller.getAllTodos_controller();
         if (allTodos) {
             getElement('#todoList').innerHTML = '';
             allTodos.forEach(function (todo) {
@@ -119,7 +127,7 @@
         allTodosView = false;
         completedTodosView = true;
         notCompletedTodosView = false;
-        const completedTodos = todoController.getCompletedTodos_controller();
+        const completedTodos = controller.getCompletedTodos_controller();
         if (completedTodos) {
             getElement('#todoList').innerHTML = '';
             completedTodos.forEach(function (todo) {
@@ -132,7 +140,7 @@
         allTodosView = false;
         completedTodosView = false;
         notCompletedTodosView = true;
-        const notCompletedTodos = todoController.getNotCompletedTodos_controller();
+        const notCompletedTodos = controller.getNotCompletedTodos_controller();
         if (notCompletedTodos) {
             getElement('#todoList').innerHTML = '';
             notCompletedTodos.forEach(function (todo) {
@@ -144,7 +152,7 @@
     function loadTodoPage() {
         categoriesListElement.innerHTML = '';
         getElement('#todoList').innerHTML = '';
-        const ActiveUserCategories = todoController.getActiveUserCategoriesList_controller();
+        const ActiveUserCategories = controller.getActiveUserCategoriesList_controller();
 
         if (isArrayHasItems(ActiveUserCategories)) {
             ActiveUserCategories.forEach(function (category) {
@@ -154,27 +162,46 @@
         }
     }
 
+    function refreshTodos() {
+        if (allTodosView) {
+            allTodosShow();
+        } else if (completedTodosView) {
+            completedTodosShow();
+        } else {
+            notCompletedTodosShow(notCompletedTodosView);
+        }
+    }
     getElement('#allTodosBtn').addEventListener('click', allTodosShow);
     getElement('#copmletedTodosBtn').addEventListener('click', completedTodosShow);
     getElement('#notCopmletedTodosBtn').addEventListener('click', notCompletedTodosShow);
 
     getElement('#addTodoBtn').addEventListener('click', function () {
         const title = getElement('#todoTitleInput').value;
-        const todo = todoController.createTodoFromUI(title);
-        if (todo) {
-            createTodoElement(todo);
-            getElement('#todoTitleInput').value = '';
+        const addTodoValidity = controller.createTodoFromUI(title);
+        if (addTodoValidity) {
+            if (!addTodoValidity.emptyCategoriesList) {
+                hideEmptyCategoriesListError();
+                const todo = addTodoValidity.todo;
+                if (todo) {
+                    createTodoElement(todo);
+                    getElement('#todoTitleInput').value = '';
+                }
+                else { return }
+                ///////////////////////////////////////////
+                refreshTodos();
+                ///////////////////////////////////////////
+
+            } else {
+                showEmptyCategoriesListError();
+            }
         }
-        else { return }
-        ///////////////////////////////////////////
-        todoController.refreshTodos();
-        ///////////////////////////////////////////
+
     });
 
     getElement('#addCategoryBtn').addEventListener('click', function () {
         const title = getElement('#categoryTitleInput').value;
         getElement('#categoryTitleInput').value = '';
-        const category = todoController.createCategoryFromUI(title);
+        const category = controller.createCategoryFromUI(title);
         if (category) {
             const categoryElement = new CategoryElement(category);
         }
@@ -182,20 +209,28 @@
     });
 
     getElement('#logoutBtn').addEventListener('click', function () {
-        todoController.restSession_controller();
+        controller.restSession_controller();
 
         showLoginPage();
     });
 
-    // // (function waitUntlPageIsFullyLoaded() {
-    // //     const page = getElement('#page');
-    // //     const scripts = Array.from(page.querySelectorAll('script'));
-    // //     const view = scripts.find(script => script.scr == './js/views/todo_view.js');
-    // //     view.addEventListener('load', loadTodoPage);
-    // // })();
-
+    // (function waitUntlPageIsFullyLoaded() {
+    //     const page = getElement('#page');
+    //     const scripts = Array.from(page.querySelectorAll('script'));
+    //     const view = scripts.find(script => script.src === 'http://127.0.0.1:5500/src/js/controllers/todo_controller.js');
+    //     view.addEventListener('load', function () {
+    //         Controller = todoController();
+    //     });
+    // })();
+    const controller = todoController();
     // window.addEventListener('load', (e) => {
     //     loadTodoPage();
     // });
     loadTodoPage();
-})();
+    // return {
+    //     activateCategory_view,
+    //     deactivateCategory_view
+    // };
+}
+
+todoView();

@@ -1,8 +1,10 @@
-(function todoModel() {
+function todoModel() {
 
     const categoriesListKey = "categoriesListKey";
     const todosListKey = "todosListKey";
-
+    const allTodosViewKey = 'allTodosViewKey';
+    const completedTodosViewKey = 'completedTodosViewKey';
+    const notCompletedTodosViewKey = 'notCompletedTodosViewKey';
     class Category {
         constructor(title) {
             this.title = title;
@@ -111,9 +113,6 @@
         if (isArrayHasItems(categoriesList)) {
             const activeUser = activeSessionUser();
             if (activeUser) {
-                categoriesList.forEach(function (category) {
-                    category.active = false;
-                });
                 const ActiveUserCategoriesList = categoriesList.filter(function (Category) {
                     return Category.uid === activeUser.uid;
                 });
@@ -128,7 +127,7 @@
 
 
     const storeTodoInLocalStorage = function storeTodoInLocalStorage(todo) {
-        const parsedTodosList = JSON.parse(localStorage.getItem(todosListKey));
+        let parsedTodosList = JSON.parse(localStorage.getItem(todosListKey));
         if (isArrayHasItems(parsedTodosList)) {
             if (isTodoExist(todo.title)) {
                 storedTodoIndex = parsedTodosList.findIndex(function (storedTodo) {
@@ -203,6 +202,19 @@
         storeSession(1);
     }
 
+    // const storeTodoViewsInLocalStorage = function storeTodoViewsInLocalStorage(all, completed, notCompleted) {
+    //     localStorage.setItem(allTodosViewKey, JSON.stringify(all));
+    //     localStorage.setItem(completedTodosViewKey, JSON.stringify(completed));
+    //     localStorage.setItem(notCompletedTodosViewKey, JSON.stringify(notCompleted));
+    // }
+
+    // const getTodoViewsFromLocalStorage = function getTodoViewsFromLocalStorage() {
+    //     const all = JSON.parse(localStorage.getItem(allTodosViewKey));
+    //     const completed = JSON.parse(localStorage.getItem(completedTodosViewKey));;
+    //     const notCompleted = JSON.parse(localStorage.getItem(notCompletedTodosViewKey));;
+    //     return { all, completed, notCompleted };
+    // }
+
     const categoriesList = getCategoriesListFromStore();
     return {
         Category,
@@ -219,7 +231,9 @@
         isTodoExist,
         getTodosListFromStore,
         getActiveCategoryTodosListFromStore,
-        restSession
+        restSession,
     };
 
-})();
+};
+
+todoModel();

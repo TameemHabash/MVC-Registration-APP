@@ -13,7 +13,7 @@ class User {
 }
 
 function storeUserInLocalStorage(user) {
-    const parsedUsersList = JSON.parse(localStorage.getItem(usersListKey));
+    let parsedUsersList = JSON.parse(localStorage.getItem(usersListKey));
     if (parsedUsersList) {
         if (isUserExist(user.email)) {
             storedUserIndex = parsedUsersList.findIndex(function (storedUser) {
@@ -25,7 +25,7 @@ function storeUserInLocalStorage(user) {
         }
     }
     else {
-        const parsedUsersList = [];
+        parsedUsersList = [];
         parsedUsersList.push(user);
     }
     localStorage.setItem(usersListKey, JSON.stringify(parsedUsersList));

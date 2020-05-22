@@ -43,7 +43,15 @@
 
         } else {
             getElement('#emptyLoginInfoError').classList.add('d-none');
-            loginProcess(emailInput, passwordInput);
+            const validity = loginValidity(emailInput, passwordInput);
+            if (!validity.existEmail) {
+                showInvalideEmailError();
+            } else if (!validity.rightPassword) {
+                hideInvalideEmailError();
+                showInvalidePasswordError();
+            } else {
+                loginProcess(validity);
+            }
         }
         loginBtn.removeEventListener('click', loginClick);
     }
