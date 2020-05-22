@@ -1,5 +1,5 @@
-let categoriesListKey = "categoriesListKey";
-let todosListKey = "todosListKey";
+const categoriesListKey = "categoriesListKey";
+const todosListKey = "todosListKey";
 
 class Category {
     constructor(title) {
@@ -197,4 +197,4 @@ function restSession() {
     storeSession(1);
 }
 
-let categoriesList = getCategoriesListFromStore();
+categoriesList = getCategoriesListFromStore();
