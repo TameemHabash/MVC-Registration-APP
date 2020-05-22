@@ -42,17 +42,6 @@ function initDate(hours) {
     return date;
 }
 
-
-function putTextIntoDiv(text) {
-    let parser = new DOMParser();
-    let doc = parser.parseFromString(text, 'text/html');
-    return doc.body;
-    // const wrapper = document.createElement('div');
-    // wrapper.insertAdjacentHTML('beforeend', text);
-    // return wrapper.innerHTML;
-}
-
-
 async function fetchPageTemplate(name) {
     const response = await fetch(`./templates/${name}.html`);
     if (response.ok) {

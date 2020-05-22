@@ -187,9 +187,7 @@ function todoView() {
                     getElement('#todoTitleInput').value = '';
                 }
                 else { return }
-                ///////////////////////////////////////////
                 refreshTodos();
-                ///////////////////////////////////////////
 
             } else {
                 showEmptyCategoriesListError();
@@ -214,23 +212,8 @@ function todoView() {
         showLoginPage();
     });
 
-    // (function waitUntlPageIsFullyLoaded() {
-    //     const page = getElement('#page');
-    //     const scripts = Array.from(page.querySelectorAll('script'));
-    //     const view = scripts.find(script => script.src === 'http://127.0.0.1:5500/src/js/controllers/todo_controller.js');
-    //     view.addEventListener('load', function () {
-    //         Controller = todoController();
-    //     });
-    // })();
     const controller = todoController();
-    // window.addEventListener('load', (e) => {
-    //     loadTodoPage();
-    // });
     loadTodoPage();
-    // return {
-    //     activateCategory_view,
-    //     deactivateCategory_view
-    // };
 }
 
 todoView();

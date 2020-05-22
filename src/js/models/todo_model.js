@@ -202,19 +202,6 @@ function todoModel() {
         storeSession(1);
     }
 
-    // const storeTodoViewsInLocalStorage = function storeTodoViewsInLocalStorage(all, completed, notCompleted) {
-    //     localStorage.setItem(allTodosViewKey, JSON.stringify(all));
-    //     localStorage.setItem(completedTodosViewKey, JSON.stringify(completed));
-    //     localStorage.setItem(notCompletedTodosViewKey, JSON.stringify(notCompleted));
-    // }
-
-    // const getTodoViewsFromLocalStorage = function getTodoViewsFromLocalStorage() {
-    //     const all = JSON.parse(localStorage.getItem(allTodosViewKey));
-    //     const completed = JSON.parse(localStorage.getItem(completedTodosViewKey));;
-    //     const notCompleted = JSON.parse(localStorage.getItem(notCompletedTodosViewKey));;
-    //     return { all, completed, notCompleted };
-    // }
-
     const categoriesList = getCategoriesListFromStore();
     return {
         Category,

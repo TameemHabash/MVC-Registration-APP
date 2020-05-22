@@ -85,24 +85,8 @@ function todoController() {
         Model.storeTodoInLocalStorage(todo);
     }
 
-    // const storeTodoViews_controller = function storeTodoViews_controller(all, completed, notCompleted) {
-    //     Model.storeTodoViews_model(all, completed, notCompleted);
-    // }
-
-    // const getTodoViews_controller = function getTodoViews_controller() {
-    //     return Model.getTodoViewsFromLocalStorage();
-    // }
-
     const Model = todoModel();
-    // let View;
-    // (function waitUntlPageIsFullyLoaded() {
-    //     const page = getElement('#page');
-    //     const scripts = Array.from(page.querySelectorAll('script'));
-    //     const view = scripts.find(script => script.src === 'http://127.0.0.1:5500/src/js/views/todo_view.js');
-    //     view.addEventListener('load', function () {
-    //         View = todoView();
-    //     });
-    // })();
+
     return {
         createCategoryFromUI,
         createTodoFromUI,
